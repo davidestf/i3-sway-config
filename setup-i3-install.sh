@@ -5,7 +5,7 @@ echo "Starting i3 installation and configuration..."
 
 # Update system
 echo "Updating package lists..."
-sudo apt update
+#sudo apt update
 
 # Install base dependencies
 echo "Installing base dependencies..."
@@ -16,7 +16,6 @@ sudo apt install -y \
     alacritty \
     terminator \
     lxappearance \
-#    nitrogen \
     picom \
     rofi \
     dunst \
@@ -50,6 +49,7 @@ cp -r config/polybar/* ~/.config/polybar/
 cp -r config/picom/* ~/.config/picom/
 cp -r config/alacritty/* ~/.config/alacritty/
 cp -r config/terminator/* ~/.config/terminator/
+cp -r config/rofi/* ~/.config/rofi/
 
 # Set execute permissions for scripts
 chmod +x ~/.config/i3/bin/*

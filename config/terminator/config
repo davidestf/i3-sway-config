@@ -1,0 +1,84 @@
+[global_config]
+  focus = system
+  geometry_hinting = True
+  scroll_tabbar = True
+  always_on_top = True
+  sticky = True
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+  always_split_with_profile = True
+  case_sensitive = False
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#121212"
+    cursor_fg_color = "#ffffff"
+    cursor_bg_color = "#000000"
+    font = Monospace 11
+    foreground_color = "#839496"
+    scroll_on_keystroke = False
+    scrollback_infinite = True
+    palette = "#282828:#e66100:#8ae234:#848e54:#729fcf:#b16286:#689d6a:#a89984:#928374:#e66100:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    custom_command = zsh
+    bold_is_bright = True
+    copy_on_selection = True
+    title_transmit_fg_color = "#3d3846"
+    title_transmit_bg_color = "#2ec27e"
+    title_receive_fg_color = "#5e5c64"
+  [[hack]]
+    foreground_color = "#ffa348"
+    palette = "#2e3436:#f6d32d:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#f6d32d:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+  [[New Profile]]
+    background_color = "#282828"
+    foreground_color = "#33d17a"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#2e3436:#ff7800:#8ae234:#c4a000:#1ecfe2:#ad7fa8:#06989a:#ffffff:#f6f5f4:#ff7800:#8ae234:#34e2e2:#1ecfe2:#ad7fa8:#34e2e2:#eeeeec"
+    login_shell = True
+    use_system_font = False
+  [[New Profile 2]]
+    background_color = "#ffffff"
+    foreground_color = "#000000"
+    title_transmit_fg_color = "#241f31"
+    title_transmit_bg_color = "#bf803f"
+    title_receive_fg_color = "#241f31"
+  [[hack 3]]
+    background_color = "#121212"
+    foreground_color = "#8a8a8a"
+    palette = "#2e3436:#f6d32d:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#f6d32d:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    title_transmit_fg_color = "#241f31"
+    title_transmit_bg_color = "#ffa348"
+    title_receive_bg_color = "#62a0ea"
+  [[New Profile 2 2]]
+    background_color = "#ffffff"
+    foreground_color = "#000000"
+    title_transmit_fg_color = "#241f31"
+    title_transmit_bg_color = "#bf803f"
+    title_receive_fg_color = "#241f31"
+  [[default 2]]
+    visible_bell = True
+    background_color = "#18181b"
+    cursor_fg_color = "#ffffff"
+    cursor_bg_color = "#000000"
+    font = Monospace 11
+    foreground_color = "#83a598"
+    scroll_on_keystroke = False
+    scrollback_infinite = True
+    palette = "#282828:#e66100:#8ae234:#ddb472:#729fcf:#b16286:#729fcf:#a89984:#928374:#e66100:#b8bb26:#fabd2f:#729fcf:#d3869b:#729fcf:#ebdbb2"
+    custom_command = zsh
+    bold_is_bright = True
+    copy_on_selection = True
+    title_transmit_fg_color = "#3d3846"
+    title_transmit_bg_color = "#2ec27e"
+    title_receive_fg_color = "#5e5c64"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default 2
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

@@ -1,0 +1,8 @@
+#[shell]
+#program = "/bin/fish"
+#args = ["-l", "-c", "zellij"]
+
+font:
+
+  # Point size of the font
+  size: 12.0

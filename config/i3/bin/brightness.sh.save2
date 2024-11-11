@@ -1,0 +1,71 @@
+#!/bin/bash
+
+DISPLAY_NAME=$(xrandr | grep " connected" | cut -d" " -f1 | head -n 1)
+BRIGHTNESS_FILE="/tmp/brightness_level"
+
+# Initialize brightness file if it doesn't exist
+if [ ! -f "$BRIGHTNESS_FILE" ]; then
+    echo "1.0" > "$BRIGHTNESS_FILE"
+fi
+
+# Pause redshift
+pause_redshift() {
+    if pgrep redshift >/dev/null; then
+        pkill -USR1 redshift
+        return 0
+    fi
+    return 1
+}
+
+# Resume redshift
+resume_redshift() {
+    if pgrep redshift >/dev/null; then
+        sleep 0.1
+        pkill -USR1 redshift
+    fi
+}
+
+# Change brightness
+change_brightness() {
+    local direction=$1
+    local current=$(xrandr --verbose | grep -m 1 "Brightness" | cut -f2 -d " ")
+    local new
+
+    if [ "$direction" = "up" ]; then
+        new=$(echo "$current + 0.1" | bc)
+    else
+        new=$(echo "$current - 0.1" | bc)
+    fi
+
+    # Ensure limits
+    if (( $(echo "$new < 0.1" | bc -l) )); then
+        new=0.1
+    elif (( $(echo "$new > 1.0" | bc -l) )); then
+        new=1.0
+    fi
+
+    # Pause redshift if running
+    pause_redshift
+    
+    # Apply new brightness
+    xrandr --output "$DISPLAY_NAME" --brightness $new
+    
+    # Save brightness level
+    echo "$new" > "$BRIGHTNESS_FILE"
+    
+    # Resume redshift if it was running
+    resume_redshift
+}
+
+# Main logic
+case "$1" in
+    "up")
+        change_brightness "up"
+        ;;
+    "down")
+        change_brightness "down"
+        ;;
+    *)
+        echo "Usage: $0 {up|down}"
+        ;;
+esac

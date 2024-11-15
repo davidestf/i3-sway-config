@@ -18,6 +18,10 @@ client.unfocused            $bg        $bg         $ia
 client.focused_inactive     $bg        $bg         $ia
 client.urgent               $rd        $rd         $tx
 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
 # Start a terminal
 bindsym $mod+Return exec terminator
 
@@ -66,6 +70,7 @@ bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
+#bindsym $mod+d focus child
 
 # Workspace definitions
 set $ws1 "1"
@@ -126,6 +131,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+
+#Keyboard Layout
+exec_always setxkbmap -layout gb
+exec_always setxkbmap -option "grp:win_space_toggle"
+
+
 # Brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/bin/brightness.sh up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/bin/brightness.sh down
@@ -137,12 +152,14 @@ bindcode Mod1+117 exec --no-startup-id playerctl previous
 bindcode Mod1+115 exec --no-startup-id playerctl next
 
 # Startup applications
+exec --no-startup-id slack
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id libinput-gestures-setup start
+
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom --config ~/.config/i3/bin/start-picom.sh
 exec_always --no-startup-id xrdb -merge ~/.Xresources
@@ -167,3 +184,64 @@ bindsym --release Ctrl+Mod1+Print exec --no-startup-id ~/.config/i3/bin/screensh
 # Selection screenshot
 bindsym --release Shift+Print exec --no-startup-id ~/.config/i3/bin/screenshot.sh
 bindsym --release Ctrl+Shift+Print exec --no-startup-id ~/.config/i3/bin/screenshot.sh | xclip -selection clipboard -t image/png
+
+
+
+# Assign Workspaces: xprop
+#assign [class="Terminator"] $ws1
+#assign [class="Joplin"] $ws1
+#assign [class="Slack"] $ws2
+#assign [class="Chromium"] $ws2
+#assign [class="Codium"] $ws3
+#assign [class="Firefox"] $ws4
+#assign [class="Mainwindow.py"] $ws5 #PlayOnLinux
+#assign [class="Blender"] $ws6
+
+#Floating definition
+#xprop
+for_window [class="Terminator"] floating disable
+for_window [class="Termite"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="Mainwindow.py"] floating enable #PlayOnLinux
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Engrampa"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+
+# for_window [class="Firefox"] border pixel 2
+# for_window [class="firefox"] border pixel 2
+for_window [class=".*"] border pixel 1
+
+for_window [class="telegram-desktop"] resize shrink 10 ppt
+
+gaps inner 5
+smart_borders on
+smart_gaps on
+
+default_border pixel 0
+default_floating_border pixel 0
+#gaps outer 5
+gaps inner 10
+
+# Nord theme colors
+set $nord0   #2E3440
+set $nord1   #3B4252
+set $nord2   #434C5E
+set $nord3   #4C566A
+set $nord4   #D8DEE9
+set $nord5   #E5E9F0
+set $nord6   #ECEFF4
+set $nord7   #8FBCBB
+set $nord8   #88C0D0
+set $nord9   #81A1C1
+set $nord10  #5E81AC
+set $nord11  #BF616A
+set $nord12  #D08770
+set $nord13  #EBCB8B
+set $nord14  #A3BE8C
+set $nord15  #B48EAD
+
+
+for_window [class="^.*"] border pixel 0
+gaps inner 0
+gaps outer 0

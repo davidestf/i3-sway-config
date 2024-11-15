@@ -19,7 +19,7 @@ change_brightness() {
         new=1.0
     fi
     
-    xrandr --output eDP-1 --brightness $new
+    xrandr --output eDP --brightness $new
 }
 
 # Handle argument

@@ -10,19 +10,26 @@ echo "Updating package lists..."
 # Install base dependencies
 echo "Installing base dependencies..."
 sudo apt install -y \
+    alacritty \
+    alsa-utils \
     i3 \
     i3status \
+    clipman \
+    compton \
+    diodon \
+    gnome-screenshot \
     polybar \
-    alacritty \
     terminator \
     lxappearance \
     picom \
     rofi \
     dunst \
+    psmisc \
     gtk2-engines-murrine \
     gtk2-engines-pixbuf \
     arc-theme \
     papirus-icon-theme \
+    pulseaudio \
     redshift \
     geoclue-2.0 \
     conky-all \
@@ -32,7 +39,6 @@ sudo apt install -y \
     blueman \
     network-manager \
     pulsemixer \
-    alsa-utils \
 
 # Create necessary directories
 echo "Creating directories..."
@@ -50,6 +56,7 @@ cp -r config/picom/* ~/.config/picom/
 cp -r config/alacritty/* ~/.config/alacritty/
 cp -r config/terminator/* ~/.config/terminator/
 cp -r config/rofi/* ~/.config/rofi/
+cp config/.dotfiles/.Xresources ~/
 
 # Set execute permissions for scripts
 chmod +x ~/.config/i3/bin/*

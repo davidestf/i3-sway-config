@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define displays
-LAPTOP="eDP-1"
-EXTERNAL="DP-3-1"
+LAPTOP="eDP"
+EXTERNAL="DisplayPort-6"
 
 # Keep laptop screen where it is (primary at 0x0)
 xrandr --output "$LAPTOP" --primary --mode 1920x1200 --pos 0x0 \

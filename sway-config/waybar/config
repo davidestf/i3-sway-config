@@ -10,7 +10,7 @@
 
     "modules-left": ["sway/workspaces", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["disk", "cpu", "custom/cputemp", "custom/gputemp", "memory", "network", "bluetooth", "custom/audio", "sway/language", "battery", "custom/power"],
+    "modules-right": ["disk", "cpu", "custom/cputemp", "custom/gputemp", "memory", "network", "bluetooth", "custom/audio", "sway/language", "battery", "custom/power", "tray"],
 
     "sway/workspaces": {
         "disable-scroll": true,
@@ -150,9 +150,12 @@
         "tooltip": false,
         "on-click": "~/.config/waybar/bin/powermenu.sh",
         "style": "color: #BF616A;"
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
     }
-
-
 
 
 }

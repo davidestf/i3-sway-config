@@ -1,0 +1,295 @@
+# Sway config adapted from i3 configuration
+
+exec export WLR_DRM_NO_ATOMIC=1
+# Set mod key (Mod4 = Super/Windows key)
+set $mod Mod4
+
+# Font for window titles
+font pango:Open Sans Semibold 11
+
+# color defines for zenburn styled i3
+set $bg     #333333
+set $ac     #111111
+set $tx     #EEEEEE
+set $ia     #777777
+set $rd     #331111
+
+
+# Colors (using your Nord theme)
+set $nord0   #2E3440
+set $nord1   #3B4252
+set $nord2   #434C5E
+set $nord3   #4C566A
+set $nord4   #D8DEE9
+set $nord5   #E5E9F0
+set $nord6   #ECEFF4
+set $nord7   #8FBCBB
+set $nord8   #88C0D0
+set $nord9   #81A1C1
+set $nord10  #5E81AC
+set $nord11  #BF616A
+
+# Window colors
+client.focused          $nord10 $nord10 $nord6  $nord8   $nord10
+client.focused_inactive $nord3  $nord3  $nord4  $nord3   $nord3
+client.unfocused        $nord3  $nord1  $nord4  $nord3   $nord1
+client.urgent           $nord11 $nord11 $nord6  $nord11  $nord11
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod normal
+
+# Start a terminal (replacing terminator with foot)
+set $term foot
+bindsym $mod+Return exec terminator
+
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start application launcher (replacing rofi with wofi)
+#set $menu wofi --show drun -i | xargs swaymsg exec --
+#bindsym $mod+d exec $menu
+#bindsym $mod+space exec $menu
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus right
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split orientation
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle floating
+bindsym $mod+Shift+f floating toggle
+
+# Toggle focus between tiling/floating
+#bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Workspace names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Reload/restart
+bindsym $mod+Shift+c reload
+# Note: Sway doesn't need restart, reload is enough
+
+# Exit sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Resize mode
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#Windows resize
+bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+
+
+# Audio controls (using WirePlumber instead of PulseAudio)
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
+# Microphone mute toggle
+bindsym XF86AudioMicMute exec ~/.config/sway/bin/mic-toggle.sh
+
+
+# Make sure the backlight directory is accessible
+exec_always chown -R $USER:$USER /sys/class/backlight/*
+# Brightness controls (using light instead of custom script)
+#bindsym XF86MonBrightnessUp exec light -A 5
+#bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 2%+
+
+# Screenshots (using grim and slurp instead of custom script)
+bindsym Print exec grim ~/Pictures/screenshots/$(date +"%Y-%m-%d-%H%M%S").png
+bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d-%H%M%S").png
+
+# Status bar (using waybar instead of polybar)
+bar {
+    swaybar_command waybar
+}
+
+# Gaps configuration
+# Window borders
+default_border pixel 0
+default_floating_border pixel 0
+
+# Gaps
+gaps inner 0
+gaps outer 0
+smart_gaps off
+
+# Additional spacing settings to ensure no gaps
+for_window [class=".*"] border pixel 0
+for_window [app_id=".*"] border pixel 0
+
+# If you still see gaps, force all windows to use no gaps
+for_window [class=".*"] gaps inner 0
+for_window [app_id=".*"] gaps inner 0
+
+# Disable smart borders if you don't want them
+smart_borders off
+
+# GTK Theme settings
+exec {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+}
+
+# Set wallpaper
+output * bg ~/.config/sway/wallpaper-debian.png fill
+
+# Include system configs
+include /etc/sway/config.d/*
+
+
+# Input configuration
+input type:keyboard {
+    xkb_layout "gb"
+    xkb_options "grp:win_space_toggle"
+    repeat_delay 300
+    repeat_rate 50
+}
+
+
+# Run rofi
+bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/nord.rasi
+#exec_always --no-startup-id rofi -show drun -theme ~/.config/rofi/nord.rasi
+
+
+# reload the configuration file
+#bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+
+
+# Get output names with: swaymsg -t get_outputs
+# Put this in your ~/.config/sway/config
+
+
+# Define your outputs
+output eDP-1 {
+# Internal display (scaled 1.25)
+    scale 1.20
+    resolution 1920x1200
+    position 0,1440
+}
+
+output DP-5 {
+# Internal display (scaled 1)
+    scale 1
+    resolution 2560x1440
+    position 0,0
+}
+
+exec ~/.config/sway/bin/screen_setup.sh
+
+
+
+
+
+
+# Night Light / Color temperature
+#exec gammastep -c ~/.config/gammastep/config.ini
+bindsym $mod+Shift+n exec ~/.config/sway/bin/toggle-gammastep.sh
+
+
+
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right
+
+
+#Applications startup
+exec --no-startup-id slack
+#exec --no-startup-id 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id libinput-gestures-setup start
+
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+
+
+

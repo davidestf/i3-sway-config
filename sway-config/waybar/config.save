@@ -1,0 +1,85 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+
+    // Modules layout matching your Polybar
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["disk", "cpu", "memory", "network", "bluetooth", "custom/audio", "sway/language", "battery", "custom/powermenu"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}"
+    },
+
+    "sway/window": {
+        "max-length": 25,
+        "tooltip": false
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% ",
+        "path": "/"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}% ",
+        "interval": 2
+    },
+
+    "memory": {
+        "format": "RAM {}% ",
+        "interval": 2
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "foot nmtui"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {num_connections}",
+        "format-disabled": "",
+        "on-click": "blueman-manager"
+    },
+
+    "custom/audio": {
+        "format": "{} ",
+        "exec": "wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/Volume: //'",
+        "on-click": "pavucontrol",
+        "interval": 1
+    },
+
+    "sway/language": {
+        "format": " {}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}

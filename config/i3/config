@@ -126,6 +126,12 @@ bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
 # Open Diodon (clipboard manager)
 bindsym $mod+Shift+m exec --no-startup-id diodon
 
+# Diodon clipboard manager settings
+for_window [class="Diodon"] floating enable
+for_window [class="Diodon"] move position right bottom
+for_window [class="Diodon"] move right 20 px
+for_window [class="Diodon"] move down 20 px
+
 # Volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
@@ -166,6 +172,9 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id ~/.config/i3/bin/screen_setup.sh
 exec_always --no-startup-id ~/.config/i3/bin/start_conky.sh
 exec --no-startup-id feh --no-xinerama --bg-fill ~/.config/i3/wallpaper.png
+
+exec_always --no-startup-id MODE=grayscale ~/.config/i3/bin/compton-grayscale.sh
+
 
 #navigate workspaces next / previous
 bindsym Shift+Ctrl+Right workspace next

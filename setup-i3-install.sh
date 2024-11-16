@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Exit on error
 set -e
 
@@ -12,6 +14,7 @@ echo "Installing base dependencies..."
 sudo apt install -y \
     alacritty \
     alsa-utils \
+    gdm3 \
     i3 \
     i3status \
     clipman \
@@ -38,11 +41,19 @@ sudo apt install -y \
     bluez \
     blueman \
     network-manager \
-    pulsemixer \
+    pulsemixer
 
 # Create necessary directories
 echo "Creating directories..."
-mkdir -p ~/.config/{gtk-3.0,gtk-4.0,i3,polybar,picom,alacritty,terminator,dunst,rofi}
+mkdir -p ~/.config/gtk-3.0
+mkdir -p ~/.config/gtk-4.0
+mkdir -p ~/.config/i3
+mkdir -p ~/.config/polybar
+mkdir -p ~/.config/picom
+mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/terminator
+mkdir -p ~/.config/dunst
+mkdir -p ~/.config/rofi
 mkdir -p ~/.themes
 mkdir -p ~/.icons
 mkdir -p ~/.config/i3/bin

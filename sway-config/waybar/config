@@ -24,7 +24,7 @@
     },
 
     "disk": {
-        "interval": 30,
+        "interval": 5,
         "format": " / {percentage_used}%",
         "path": "/"
     },
@@ -155,7 +155,8 @@
 
     "tray": {
         // "icon-size": 21,
-        "spacing": 20
+        "spacing": 10
+
     }
 
 

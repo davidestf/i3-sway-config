@@ -1,6 +1,8 @@
 # Sway config adapted from i3 configuration
 
 exec export WLR_DRM_NO_ATOMIC=1
+exec export GDK_DPI_SCALE=1.1
+
 # Set mod key (Mod4 = Super/Windows key)
 set $mod Mod4
 

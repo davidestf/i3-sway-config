@@ -27,8 +27,11 @@ fonts-font-awesome \
 lxappearance \
 sway-notification-center \
 xdg-desktop-portal-wlr \
-wofi
-
+wofi \
+jq \
+grim \
+slurp \
+swappy
 
 # Create necessary directories
 echo "Creating directories..."

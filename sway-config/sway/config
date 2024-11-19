@@ -182,8 +182,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 2%+
 
 # Screenshots (using grim and slurp instead of custom script)
-bindsym Print exec grim ~/Pictures/screenshots/$(date +"%Y-%m-%d-%H%M%S").png
+#bindsym Print exec grim ~/Pictures/screenshots/$(date +"%Y-%m-%d-%H%M%S").png
 bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d-%H%M%S").png
+bindsym Print       exec ~/.config/sway/bin/screenshot.sh region
+bindsym Shift+Print       exec ~/.config/sway/bin/screenshot.sh window
+#bindsym Ctrl+Print        exec ~/.config/sway/bin/screenshot.sh output
+#bindsym Ctrl+Shift+Print  exec ~/.config/sway/bin/screenshot.sh all
 
 # Status bar (using waybar instead of polybar)
 bar {

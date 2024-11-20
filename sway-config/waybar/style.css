@@ -90,15 +90,15 @@ window#waybar {
 }
 
 #cpu {
-    color: #88C0D0;
+    color: #8fa4aa;
 }
 
 #memory {
-    color: #B48EAD;
+    color: #8fa4aa;
 }
 
 #disk {
-    color: #EBCB8B;
+    color: #8fa4aa;
 }
 
 #network {
@@ -154,7 +154,7 @@ window#waybar {
 }
 
 #clock {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 #window {
@@ -170,3 +170,14 @@ tooltip {
 tooltip label {
     color: #D8DEE9;
 }
+
+
+
+
+
+
+
+
+
+
+

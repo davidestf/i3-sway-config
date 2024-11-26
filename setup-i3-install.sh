@@ -41,6 +41,7 @@ sudo apt install -y \
     bluez \
     blueman \
     network-manager \
+    xclip \
     pulsemixer
 
 # Create necessary directories
@@ -58,6 +59,7 @@ mkdir -p ~/.themes
 mkdir -p ~/.icons
 mkdir -p ~/.config/i3/bin
 mkdir -p ~/.config/i3/conky
+mkdir -p ~/Pictures/screenshots
 
 # Copy configurations
 echo "Copying configurations..."

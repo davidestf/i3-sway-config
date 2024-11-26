@@ -31,6 +31,8 @@ wofi \
 jq \
 grim \
 slurp \
+wl-clipboard \
+wf-recorder \ 
 swappy
 
 # Create necessary directories

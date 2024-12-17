@@ -26,3 +26,4 @@ echo "Laptop: --pos 0x$EXTERNAL_HEIGHT"
 
 echo -e "\nCurrent Positions:"
 xrandr --verbose | grep -A1 "connected" | grep -v "connected" | grep "+"
+swaymsg -t get_outputs 

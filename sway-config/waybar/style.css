@@ -2,11 +2,11 @@
     border: none;
     border-radius: 0;
     font-family: monospace;
-    font-size: 14px;
+    font-size: 16px;
     min-height: 0;
 }
 
-window#waybar {
+#window waybar {
     background: #2E3440;
     color: #D8DEE9;
     border-bottom: 3px solid rgba(100, 114, 125, 0.5);
@@ -27,7 +27,7 @@ window#waybar {
 }
 
 #custom-power {
-    color: #b82a38;
+    color: #8fa4aa;
     padding: 0 10px;
 }
 
@@ -118,7 +118,7 @@ window#waybar {
 }
 
 #custom-audio {
-    color: #D08770;
+    color: #8fa4aa;
 }
 
 /* Module separators */

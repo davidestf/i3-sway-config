@@ -43,6 +43,9 @@ floating_modifier $mod normal
 # Start a terminal (replacing terminator with foot)
 set $term foot
 bindsym $mod+Return exec terminator
+bindsym $mod+Shift+Return exec terminator --title=termfloat
+for_window [title="termfloat"] floating enable
+for_window [title="termfloat"] resize set 1000px 600px
 
 
 # Kill focused window

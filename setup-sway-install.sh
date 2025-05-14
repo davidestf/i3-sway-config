@@ -46,6 +46,7 @@ echo "Copying configurations..."
 cp -r sway-config/gammastep/* ~/.config/gammastep
 cp -r sway-config/sway/* ~/.config/sway
 cp -r sway-config/waybar/* ~/.config/waybar
+cp config/mimeapps.list ~/.config/
 
 
 

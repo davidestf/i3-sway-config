@@ -1,0 +1,4 @@
+[Default Applications]
+inode/directory=org.gnome.Nautilus.desktop
+application/pdf=org.gnome.Evince.desktop
+text/plain=code.desktop

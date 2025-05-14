@@ -69,6 +69,7 @@ cp -r config/picom/* ~/.config/picom/
 cp -r config/alacritty/* ~/.config/alacritty/
 cp -r config/terminator/* ~/.config/terminator/
 cp -r config/rofi/* ~/.config/rofi/
+cp config/mimeapps.list ~/.config/
 cp config/.dotfiles/.Xresources ~/
 
 # Set execute permissions for scripts
